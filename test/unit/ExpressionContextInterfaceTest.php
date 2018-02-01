@@ -1,23 +1,23 @@
 <?php
 
-namespace Dhii\Expression\FuncTest;
+namespace Dhii\Expression\Renderer\UnitTest;
 
+use Dhii\Expression\Renderer\ExpressionContextInterface as TestSubject;
 use Xpmock\TestCase;
-use Dhii\Expression\MyClass as TestSubject;
 
 /**
  * Tests {@see TestSubject}.
  *
  * @since [*next-version*]
  */
-class MyClassTest extends TestCase
+class ExpressionContextInterfaceTest extends TestCase
 {
     /**
-     * The name of the test subject.
+     * The class name of the test subject.
      *
      * @since [*next-version*]
      */
-    const TEST_SUBJECT_CLASSNAME = 'Dhii\Expression\MyClass';
+    const TEST_SUBJECT_CLASSNAME = 'Dhii\Expression\Renderer\ExpressionContextInterface';
 
     /**
      * Creates a new instance of the test subject.
@@ -29,9 +29,10 @@ class MyClassTest extends TestCase
     public function createInstance()
     {
         $mock = $this->mock(static::TEST_SUBJECT_CLASSNAME)
-            ->new();
+                     ->get()
+                     ->has();
 
-        return $mock;
+        return $mock->new();
     }
 
     /**
@@ -45,6 +46,12 @@ class MyClassTest extends TestCase
 
         $this->assertInstanceOf(
             static::TEST_SUBJECT_CLASSNAME,
+            $subject,
+            'A valid instance of the test subject could not be created.'
+        );
+
+        $this->assertInstanceOf(
+            'Psr\Container\ContainerInterface',
             $subject,
             'A valid instance of the test subject could not be created.'
         );
