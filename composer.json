@@ -12,7 +12,8 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^5.3 | ^7.0"
+        "php": "^5.3 | ^7.0",
+        "psr/container": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8",
@@ -22,7 +23,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Dhii\\Output\\Renderer\\": "src"
+            "Dhii\\Expression\\Renderer\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Dhii\\Expression\\Renderer\\FuncTest\\": "test/functional",
+            "Dhii\\Expression\\Renderer\\UnitTest\\": "test/unit"
         }
     },
     "scripts": {
